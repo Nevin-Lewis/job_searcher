@@ -26,6 +26,11 @@ const typeDefs = gql`
     contacts: [Contact]
   }
 
+  type Auth {
+    token: String!
+    user: User!
+  }
+
   type Query {
     contact(id: ID!): Contact
     contacts: [Contact]
