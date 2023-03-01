@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 
-const userDocs = newSchema({
+const upload = new Schema({
   type: {
     type: String,
     required: true,
@@ -17,6 +17,6 @@ const userDocs = newSchema({
   },
 });
 
-const Upload = model('Upload', userDocs);
+const Upload = model('Upload', upload);
 
 module.exports = Upload;
