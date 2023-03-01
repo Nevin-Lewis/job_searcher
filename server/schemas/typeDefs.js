@@ -11,7 +11,7 @@ const typeDefs = gql`
     }
 
   type Contact {
-    id: ID!
+    _id: ID!
     name: String!
     cellphone: String!
     email: String!
@@ -20,10 +20,17 @@ const typeDefs = gql`
   }
 
   type Job {
-    id: ID!
-    name: String!
+    _id: ID!
+    company: String!
+    title: String!
+    jobPostLink: String!
+    salary: Number!
+    description: String!
     location: String!
+    skills: [String]
+    tasks: [String]
     contacts: [Contact]
+    Upload: [Upload]
   }
 
   type Auth {
@@ -32,16 +39,16 @@ const typeDefs = gql`
   }
 
   type Query {
-    contact(id: ID!): Contact
+    contact(_id: ID!): Contact
     contacts: [Contact]
-    job(id: ID!): Job
+    job(_id: ID!): Job
     jobs: [Job]
   }
 
   type Mutation {
     createContact(name: String!, cellphone: String!, email: String!, title: String!, companyId: ID): Contact!
-    updateContact(id: ID!, name: String, cellphone: String, email: String, title: String, companyId: ID): Contact!
-    deleteContact(id: ID!): Contact
+    updateContact(_id: ID!, name: String, cellphone: String, email: String, title: String, companyId: ID): Contact!
+    deleteContact(_id: ID!): Contact
   }
 
 `
