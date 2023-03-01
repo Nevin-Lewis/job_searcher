@@ -11,7 +11,7 @@ const typeDefs = gql`
     }
 
   type Contact {
-    id: ID!
+    _id: ID!
     name: String!
     cellphone: String!
     email: String!
@@ -20,10 +20,17 @@ const typeDefs = gql`
   }
 
   type Job {
-    id: ID!
-    name: String!
+    _id: ID!
+    company: String!
+    title: String!
+    jobPostLink: String!
+    salary: Number!
+    description: String!
     location: String!
+    skills: [String]
+    tasks: [String]
     contacts: [Contact]
+    Upload: [Upload]
   }
 
   type Auth {
