@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
+
+// MUI
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -87,11 +90,21 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
+
+              {/* Came with mui */}
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
+
+              {/* Using link */}
+              {/* <Link className="text-dark" to="../Pages/JobTrack">
+              <h1 className="m-0" style={{ fontSize: '3rem' }}>
+                Tracker
+              </h1>
+              </Link> */}
+
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
