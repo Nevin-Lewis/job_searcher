@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import NavBar from './components/NavBar';
+import HomePage from './Pages/HomePage';
+import JobTrack from './Pages/JobTrack';
+import JobDetails from './Pages/JobDetails';
 import './App.css';
 
 const client = new ApolloClient({
@@ -26,8 +29,9 @@ function App() {
       <>
         <NavBar />
         <Routes>
-          {/* <Route exact path='/' component={SearchBooks} /> */}
-
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/JobTrack' component={JobTrack} />
+          <Route exact path='/JobDetails' component={JobDetails} />
         </Routes>
       </>
     </Router>
