@@ -1,11 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import './App.css';
+
+// Import components
 import NavBar from './components/NavBar';
 import HomePage from './Pages/HomePage';
 import JobTrack from './Pages/JobTrack';
 import JobDetails from './Pages/JobDetails';
-import './App.css';
+
 
 const client = new ApolloClient({
   // link: authLink.concat(httpLink),
@@ -29,9 +32,9 @@ function App() {
       <>
         <NavBar />
         <Routes>
-          <Route exact path='/' component={HomePage} />
-          <Route exact path='/JobTrack' component={JobTrack} />
-          <Route exact path='/JobDetails' component={JobDetails} />
+          <Route exact path='/' element={<HomePage />} />
+          <Route exact path='/JobTrack' element={<JobTrack />} />
+          <Route exact path='/JobDetails' element={<JobDetails />} />
         </Routes>
       </>
     </Router>
