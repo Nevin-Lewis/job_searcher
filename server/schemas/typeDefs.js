@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const {gql} = require('apollo-server-express');
 
 const typeDefs = gql`
     type User {
@@ -57,7 +57,7 @@ const typeDefs = gql`
     salary: Int!
     description: String!
     location: String!
-    uploads: UploadInput
+    uploads: Upload
     skills: [String]
     tasks: [String]
   }
@@ -82,8 +82,6 @@ const typeDefs = gql`
     deleteJob(id: ID!): Job!
 
     addUser(input: UserInput!): User!
-    updateJob(id: ID!, input: UserInput!): User!
-    deleteJob(id: ID!): Job!
   }
 
 `;
