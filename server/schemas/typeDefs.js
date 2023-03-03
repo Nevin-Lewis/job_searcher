@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const {gql} = require('apollo-server-express');
 
 const typeDefs = gql`
     type User {
@@ -24,13 +24,19 @@ const typeDefs = gql`
     company: String!
     title: String!
     jobPostLink: String!
-    salary: Number!
+    salary: Int!
     description: String!
     location: String!
+    uploads: Upload
     skills: [String]
     tasks: [String]
     contacts: [Contact]
-    Upload: [Upload]
+  }
+  type Upload {
+    _id: ID!
+    type: String!
+    filename: String!
+    job: Job
   }
 
   type Auth {
@@ -46,16 +52,14 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createContact(name: String!, cellphone: String!, email: String!, title: String!, companyId: ID): Contact!
-    updateContact(_id: ID!, name: String, cellphone: String, email: String, title: String, companyId: ID): Contact!
+    createContact(name: String!, cellphone: String!, email: String!, 
+      title: String!, companyId: ID): Contact!
+    updateContact(_id: ID!, name: String, cellphone: String, email: String, 
+      title: String, companyId: ID): Contact!
     deleteContact(_id: ID!): Contact
   }
 
-`
-
-
-
-
+`;
 
 
 module.exports = typeDefs;

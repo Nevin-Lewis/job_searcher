@@ -18,7 +18,6 @@ const userSchema = new Schema(
         type: String,
         required: true,
       },
-      // set savedBooks to be an array of data that adheres to the bookSchema
       jobs: [
         {
           type: Schema.Types.ObjectId,
@@ -26,10 +25,10 @@ const userSchema = new Schema(
         },
       ],
     },
-    // set this to use virtual below
+    // dont need virtuals
     {
       toJSON: {
-        virtuals: true,
+        virtuals: false,
       },
     },
 );
