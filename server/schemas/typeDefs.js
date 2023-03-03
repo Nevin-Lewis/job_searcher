@@ -90,6 +90,7 @@ const typeDefs = gql`
     addUser(input: UserInput!): Auth
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): User!
+
   }
 
 `;
