@@ -1,4 +1,4 @@
-const {gql} = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type User {
@@ -44,7 +44,26 @@ const typeDefs = gql`
     user: User!
   }
 
+  input UserInput {
+    username: String!
+    email: String!
+    password: String!
+  }
+
+  input JobInput {
+    company: String!
+    title: String!
+    jobPostLink: String!
+    salary: Int!
+    description: String!
+    location: String!
+    uploads: UploadInput
+    skills: [String]
+    tasks: [String]
+  }
+
   type Query {
+    me: User
     contact(_id: ID!): Contact
     contacts: [Contact]
     job(_id: ID!): Job
@@ -52,11 +71,19 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createContact(name: String!, cellphone: String!, email: String!, 
+    addContact(name: String!, cellphone: String!, email: String!, 
       title: String!, companyId: ID): Contact!
     updateContact(_id: ID!, name: String, cellphone: String, email: String, 
       title: String, companyId: ID): Contact!
     deleteContact(_id: ID!): Contact
+
+    addJob(input: JobInput!): Job!
+    updateJob(id: ID!, input: JobInput!): Job!
+    deleteJob(id: ID!): Job!
+
+    addUser(input: UserInput!): User!
+    updateJob(id: ID!, input: UserInput!): User!
+    deleteJob(id: ID!): Job!
   }
 
 `;
