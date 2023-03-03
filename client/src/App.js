@@ -7,7 +7,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import HomePage from './Pages/HomePage';
 import JobTrack from './Pages/JobTrack';
-// import JobDetails from './Pages/JobDetails';
+import JobDetails from './Pages/JobDetails';
 
 
 const client = new ApolloClient({
@@ -36,9 +36,7 @@ function App() {
         <Routes>
           <Route exact path='/Home' element={<HomePage />} />
           <Route exact path='/JobTrack' element={<JobTrack />} />
-      
-          
-          {/* <Route exact path='/JobDetails' element={<JobDetails />} /> */}
+          <Route exact path='/JobDetails' element={<JobDetails />} />
         </Routes>
       </>
     </Router>
