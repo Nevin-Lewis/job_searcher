@@ -44,6 +44,11 @@ const typeDefs = gql`
     user: User!
   }
 
+  input UploadInput {
+    type: String!
+    filename: String!
+  }
+
   input UserInput {
     username: String!
     email: String!
@@ -71,6 +76,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    login(email: String!, password: String!): Auth
     addContact(name: String!, cellphone: String!, email: String!, 
       title: String!, companyId: ID): Contact!
     updateContact(_id: ID!, name: String, cellphone: String, email: String, 
@@ -81,7 +87,10 @@ const typeDefs = gql`
     updateJob(id: ID!, input: JobInput!): Job!
     deleteJob(id: ID!): Job!
 
-    addUser(input: UserInput!): User!
+    addUser(input: UserInput!): Auth
+    updateUser(id: ID!, input: UserInput!): User!
+    deleteUser(id: ID!): User!
+
   }
 
 `;
