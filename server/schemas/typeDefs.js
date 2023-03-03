@@ -57,7 +57,7 @@ const typeDefs = gql`
     salary: Int!
     description: String!
     location: String!
-    uploads: Upload
+    uploads: String!
     skills: [String]
     tasks: [String]
   }
