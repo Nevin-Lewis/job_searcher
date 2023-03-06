@@ -22,3 +22,65 @@ export const GET_ME = gql`
     }
   }
 `;
+
+export const QUERY_CONTACT = gql`
+  query getContact($_id: ID!) {
+    contact(_id: $_id) {
+      _id
+      name
+      cellphone
+      email
+      title
+      company
+    }
+  }
+`;
+
+export const QUERY_CONTACTS = gql`
+  query getContacts {
+    contacts {
+      _id
+      name
+      cellphone
+      email
+      title
+      company
+    }
+  }
+`;
+
+export const QUERY_JOB = gql`
+  query getJob($_id: ID!) {
+    Job(_id: $_id) {
+      _id
+      company
+      title
+      jobPostLink
+      salary
+      description
+      location
+      uploads
+      skills
+      tasks
+      contacts
+    }
+  }
+`;
+
+export const QUERY_JOBS = gql`
+  query getJobs {
+    Jobs {
+      _id
+      company
+      title
+      jobPostLink
+      salary
+      description
+      location
+      uploads
+      skills
+      tasks
+      contacts
+    }
+  }
+`;
