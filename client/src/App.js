@@ -34,7 +34,7 @@ function App() {
       <>
       <NavBar />
         <Routes>
-          <Route exact path='/Home' element={<HomePage />} />
+          <Route exact path='/' element={<HomePage />} />
           <Route exact path='/JobTrack' element={<JobTrack />} />
           <Route exact path='/JobDetails' element={<JobDetails />} />
         </Routes>
