@@ -1,12 +1,11 @@
-import React from "react";
-
-function jobCard() {
+function companyCard() {
     return (
         <div>
             <h3>Company</h3>
             <p>Job Title</p>
         </div>
+
     );
 }
 
-export default jobCard;
+export default companyCard;
