@@ -66,6 +66,7 @@ mutation AddContact($name: String!, $cellphone: String!, $email: String!, $title
     name
     title
   }
+}
 
 `;
 
@@ -113,6 +114,7 @@ mutation AddJob($input: JobInput!) {
       title
     }
   }
+}
 
 `;
 
@@ -136,6 +138,7 @@ mutation UpdateJob($updateJobId: ID!, $input: JobInput!) {
     tasks
     title
   }
+}
 
 `;
 
