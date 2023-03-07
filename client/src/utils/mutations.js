@@ -39,6 +39,7 @@ mutation UpdateUser($updateUserId: ID!, $input: UserInput!) {
     }
   }
 }
+
 `;
 
 export const DELETE_USER = gql`
@@ -50,6 +51,7 @@ mutation DeleteUser($deleteUserId: ID!) {
     username
   }
 }
+
 `;
 
 export const ADD_CONTACT = gql`
@@ -64,7 +66,8 @@ mutation AddContact($name: String!, $cellphone: String!, $email: String!, $title
     name
     title
   }
-}  
+}
+
 `;
 
 export const UPDATE_CONTACT = gql`
@@ -88,6 +91,7 @@ mutation DeleteContact($id: ID!) {
     _id
   }
 }
+
 `;
 
 export const ADD_JOB = gql`
@@ -111,6 +115,7 @@ mutation AddJob($input: JobInput!) {
     }
   }
 }
+
 `;
 
 export const UPDATE_JOB = gql`
@@ -134,6 +139,7 @@ mutation UpdateJob($updateJobId: ID!, $input: JobInput!) {
     title
   }
 }
+
 `;
 
 export const DELETE_JOB = gql`
@@ -142,4 +148,5 @@ mutation DeleteJob($deleteJobId: ID!) {
     _id
   }
 }
+
 `;
