@@ -2,7 +2,7 @@
 // import {DndContext, closestCenter};
 // import JobTrackList from '../Components/JobTrackList';
 // import JobCard from '../Components/JobCard';
-import {Draggable, Droppable} from react-beautiful-dnd;
+import {Draggable, Droppable} from 'react-beautiful-dnd';
 
 // ReactDOM.render(<JobCard />, document.getElementById('root'))
 
