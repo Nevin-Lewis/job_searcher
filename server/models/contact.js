@@ -18,10 +18,6 @@ const contactSchema = new Schema({
     type: String,
     required: true,
   },
-  company: {
-    type: Schema.Types.ObjectId,
-    ref: 'Job',
-  },
 });
 
 const Contact = model('Contact', contactSchema);

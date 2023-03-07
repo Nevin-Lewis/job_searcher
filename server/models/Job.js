@@ -28,10 +28,10 @@ const jobSchema = new Schema({
   tasks: {
     type: [String],
   },
-  contacts: {
+  contacts: [{
     type: Schema.Types.ObjectId,
     ref: 'Contact',
-  },
+  }],
   uploads: {
     type: Schema.Types.ObjectId,
     ref: 'Upload',
