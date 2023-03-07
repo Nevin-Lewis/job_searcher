@@ -16,7 +16,6 @@ const typeDefs = gql`
     cellphone: String!
     email: String!
     title: String!
-    company: Job
   }
 
   type Job {

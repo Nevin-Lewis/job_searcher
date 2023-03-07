@@ -8,7 +8,7 @@ const resolvers = {
       return await Contact.find();
     },
     contact: async (parent, {_id}) => {
-      return await Contact.findById(_id).populate('company');
+      return await Contact.findById(_id);
     },
     me: async (parent, args, context) => {
       if (context.user) {
@@ -21,7 +21,7 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     jobs: async () => {
-      return await Job.find();
+      return await Job.find().populate('contacts').populate('uploads');
     },
     job: async (parent, {_id}) => {
       return await Job.findById(_id).populate('contacts').populate('uploads');
