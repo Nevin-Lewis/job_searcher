@@ -33,9 +33,7 @@ const SignupForm = () => {
     try {
       const mutationResponse = await addUser({
         variables: {
-          username: userFormData.username,
-          email : userFormData.email,
-          password: userFormData.password,
+          ...userFormData
         }
       });
 
