@@ -3,7 +3,9 @@
 import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./../App.css";
+
 import { useForm, useFieldArray } from "react-hook-form";
+import Auth from '../utils/auth';
 
 // import styled from '@emotion/styled';
 // import jobCard from '../components/JobCard'
@@ -117,9 +119,11 @@ function JobTrack() {
   };
 
   return (
+    
     <div>
       <h1>JobTrack</h1>
       <div className="jobTrack">
+      { Auth.loggedIn() && (
         <DragDropContext onDragEnd={handleOnDragEnd}>
           {/* Wishlist */}
           <Droppable droppableId="wishlist">
@@ -276,11 +280,12 @@ function JobTrack() {
             )}
           </Droppable>
         </DragDropContext>
+         )}
       </div>
+     
     </div>
   );
-}
-
+              };
 export default JobTrack;
 
 {

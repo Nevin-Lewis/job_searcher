@@ -58,20 +58,19 @@ db.once('open', async () => {
 
   await User.deleteMany();
 
-  const users = await User.insertMany([
-    {
-      username: 'testuser1',
-      email: 'testemail@gmail.com',
-      password: 'password123',
-      jobs: [jobs[0]._id, jobs[1]._id],
-    },
-    {
-      username: 'testuser2',
-      email: 'testemail2@gmail.com',
-      password: 'passwrod123',
-      jobs: [jobs[0]._id, jobs[1]._id],
-    },
-  ]);
+  await User.create(
+      {
+        username: 'testuser1',
+        email: 'testemail@gmail.com',
+        password: 'password123',
+        jobs: [jobs[0]._id, jobs[1]._id],
+      });
+  await User.create( {
+    username: 'testuser2',
+    email: 'testemail2@gmail.com',
+    password: 'passwrod123',
+    jobs: [jobs[0]._id, jobs[1]._id],
+  });
   console.log('users seeded');
   process.exit();
 });
