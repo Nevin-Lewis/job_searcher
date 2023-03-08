@@ -1,3 +1,14 @@
+:root {
+  --grey: #EDF7FD;
+  --med-grey: #E4E4E5;
+  --m3-gray: #D2D2D2;
+  --b1: #C7DDED;
+  --b2: #A8CBE3;
+  --b3: #8DC4EC;
+  --b4: #66A2CD;
+  --b5: #038BED ;
+}
+
 
 .App {
   text-align: center;
@@ -11,7 +22,7 @@
 
 
 .App-Header {
-  background-color: #282c34;
+  background-color: #c5cfe3;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,19 +36,20 @@
   color: #61dafb;
 }
 
+
+.title {
+  font-size: 20px;
+  /* margin-left:20px; */
+  margin-top:10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  font-weight: bolder;
+}
 .job {
   list-style: none;
   padding-left: 0;
 }
 
-.job li {
-  display: flex;
-  align-items: center;
-  border: solid 2px #d0d0d0;
-  border-radius: .2em;
-  padding: .5em .8em .5em .5em;
-  margin-bottom: 1em;
-}
 
 .job p {
   max-width: none;
@@ -50,8 +62,11 @@
   width: 175px;
   height: 75px;
   border-radius: 5px;
-  background-color: #e8e8e8;
-  padding-left: 30px;
+  border-width: 2px;
+  border: solid;
+  border-color: var(--m3-gray);
+  background-color:var(--grey);
+  padding-left: 10px;
   margin: 15px;
   text-align: left;
   vertical-align: middle;
@@ -61,10 +76,48 @@
 }
 
 .jobList {
-  background-color: #282c34;
-  width: 400px;
-
+  
+  background-color: var(--med-grey);
+  width: 275px;
+  border-color: var(--m3-grey);
+  border: solid;
+  border-width:2px;
+  margin-left:8px;
+  margin-right:8px; 
+  border-radius: 8px;
 }
+
+ #wishlist {
+  border-color: var(--b1);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+  
+ }
+
+ #applied {
+  border-color: var(--b2);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #phone {
+  border-color: var(--b3);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #next {
+  border-color: var(--b4);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #offer {
+  border-color: var(--b5);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);;
+ }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

@@ -5,7 +5,7 @@ import {
   ApolloProvider,
   createHttpLink,
 } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context'; 
+import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
@@ -14,6 +14,7 @@ import NavBar from './components/NavBar';
 import HomePage from './Pages/HomePage';
 import JobTrack from './Pages/JobTrack';
 import JobDetails from './Pages/JobDetails';
+import Profile from './Pages/Profile';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,18 +42,19 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-    
-    <Router>
 
-      <>
-      <NavBar />
-        <Routes>
-          <Route exact path='/' element={<HomePage />} />
-          <Route exact path='/JobTrack' element={<JobTrack />} />
-          <Route exact path='/JobDetails' element={<JobDetails />} />
-        </Routes>
-      </>
-    </Router>
+      <Router>
+
+        <>
+          <NavBar />
+          <Routes>
+            <Route exact path='/' element={<HomePage />} />
+            <Route exact path='/JobTrack' element={<JobTrack />} />
+            <Route exact path='/JobDetails' element={<JobDetails />} />
+            <Route exact path='/Profile' element={<Profile />} />
+          </Routes>
+        </>
+      </Router>
     </ApolloProvider>
   );
 }

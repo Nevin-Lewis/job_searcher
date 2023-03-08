@@ -1,17 +1,11 @@
-// import Container from 'react-bootstrap';
-// import {DndContext, closestCenter};
 import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./../App.css";
 
-import { useForm, useFieldArray } from "react-hook-form";
+
 import Auth from '../utils/auth';
 
-// import styled from '@emotion/styled';
-// import jobCard from '../components/JobCard'
-// import { id, company, title, jobStage} from <- data for job
 
-// ReactDOM.render(<JobCard />, document.getElementById('root'))
 
 //add way to correlate to what stage you are in, in the model, and add mutation for updating job stage
 const fakeData = [
@@ -35,8 +29,26 @@ const fakeData = [
   },
 ];
 
+function JobCard({id, index, company, title}) {
+  return (
+    <Draggable draggableId={id} index={index}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <div className="jobCard">
+            <p>{company}</p>
+            <p>{title}</p>
+          </div>
+        </div>
+      )}
+    </Draggable>
+  );
+}
+
 function JobTrack() {
-  const [job, updateJob] = useState(fakeData);
   const [wishlist, setwishlist] = useState(
     fakeData.filter((app) => app.jobStage === 1)
   );
@@ -111,10 +123,7 @@ function JobTrack() {
       console.log("result specific " + JSON.stringify(result[source.droppableId]))
       eval("set" + source.droppableId)(result[source.droppableId]);
       eval("set" + destination.droppableId)(result[destination.droppableId]);
-      // setState({
-      //   items: result.droppable,
-      //   selected: result.droppable2,
-      // });
+
     }
   };
 
@@ -124,163 +133,93 @@ function JobTrack() {
       <h1>JobTrack</h1>
       <div className="jobTrack">
       { Auth.loggedIn() && (
-        <DragDropContext onDragEnd={handleOnDragEnd}>
+      <DragDropContext onDragEnd={handleOnDragEnd}>
           {/* Wishlist */}
           <Droppable droppableId="wishlist">
-            
             {(provided) => (
-              <div className="jobList">
-                <h2>Wishlist</h2>
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
-                {wishlist.map(({ id, company, title, jobStage }, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className="jobCard">
-                            <p>{company}</p>
-                            <p>{title}</p>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
+              <div className="jobList" id="wishlist">
+                <div className="title">Wishlist</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {wishlist.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                    <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
-            
           </Droppable>
 
           {/* Applied */}
-          <Droppable droppableId="applied" className="jobList">
+          <Droppable droppableId="applied">
             {(provided) => (
-              <div className="jobList">
-              <h2>Applied</h2>
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
-                {applied.map(({ id, company, title, jobStage }, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className="jobCard">
-                            <p>{company}</p>
-                            <p>{title}</p>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
+              <div className="jobList" id="applied">
+                <div className="title">Applied</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {applied.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
           </Droppable>
 
           {/* Phone Interview */}
-          <Droppable droppableId="phone" className="jobList">
+          <Droppable droppableId="phone">
             {(provided) => (
-              <div className="jobList">
-              <h2>Phone Interview</h2>
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
-                {phone.map(({ id, company, title, jobStage }, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className="jobCard">
-                            <p>{company}</p>
-                            <p>{title}</p>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
+              <div className="jobList" id="phone">
+                <div className="title">Phone Interview</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {phone.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
           </Droppable>
 
           {/* Next Interviews */}
-          <Droppable droppableId="next" className="jobList">
+          <Droppable droppableId="next">
             {(provided) => (
-              <div className="jobList">
-              <h2>Next Interviews</h2>
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
-                {next.map(({ id, company, title, jobStage }, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className="jobCard">
-                            <p>{company}</p>
-                            <p>{title}</p>
-                          </div>
-                        </li>
-                      )}
-                    </Draggable>
-                  );
-                })}
-                {provided.placeholder}
-              </ul>
+              <div className="jobList" id="next">
+                <div className="title">Next Interviews</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {next.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
           </Droppable>
 
           {/* Job Offer */}
-          <Droppable droppableId="offer    " className="jobList">
+          <Droppable droppableId="offer">
             {(provided) => (
-              <div className="jobList">
-              <h2>Job Offer</h2>
-              <ul {...provided.droppableProps} ref={provided.innerRef}>
-                {offer.map(({ id, company, title, jobStage }, index) => {
-                  return (
-                    <Draggable key={id} draggableId={id} index={index}>
-                      {(provided) => (
-                        
-                        <li
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className="jobCard">
-                            <p>{company}</p>
-                            <p>{title}</p>
-                          </div>
-                        </li>
-                        
-                      )}
-                    </Draggable>
-                  );
-                  
-                })}
-                {provided.placeholder}
-              </ul>
+              <div className="jobList" id="offer">
+                <div className="title">Job Offer</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {offer.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
               </div>
             )}
           </Droppable>
         </DragDropContext>
-         )}
+        )} 
       </div>
      
     </div>
@@ -288,20 +227,3 @@ function JobTrack() {
               };
 export default JobTrack;
 
-{
-  /* <Draggable draggableId="jobStage"> */
-}
-{
-  /* draggable id will need to be = to droppable ID to render*/
-}
-{
-  /* card component */
-}
-{
-  /* </Draggable>
-        <Droppable droppableId="1"></Droppable>
-        <Droppable droppableId="2"></Droppable>
-        <Droppable droppableId="3"></Droppable>
-        <Droppable droppableId="4"></Droppable>
-        <Droppable droppableId="5"></Droppable> */
-}
