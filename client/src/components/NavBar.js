@@ -15,9 +15,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-
-const pages = ['JobTrack', 'JobCard'];
-const settings = ['Logout'];
+import Auth from '../utils/auth';
+const pages = ['JobTrack', 'JobDetails'];
+const settings = ['Profile', 'Logout'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -163,11 +163,16 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+               <MenuItem key={settings[1]} onClick={Auth.logout}>
+                  <Typography textAlign="center">{settings[1]}</Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key={settings[0]}>
+                <Link className="text-dark"  to={`/JobTrack`} >{
+                    <Typography textAlign="center">{settings[0]}</Typography>
+                }</Link>
+                
+                </MenuItem>
+      
             </Menu>
           </Box>
         </Toolbar>
