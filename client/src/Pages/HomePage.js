@@ -1,4 +1,4 @@
-import SignupForm from "../components/SignUpForm";
+import LoginForm from "../components/LoginForm";
 import React from "react";
 
 function HomePage() {
@@ -6,9 +6,7 @@ function HomePage() {
         <div>
             <h1>Homepage</h1>
 
-            <SignupForm />
-
-
+            <LoginForm />
 
         </div>
 
