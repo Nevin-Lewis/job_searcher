@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert,  } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
@@ -26,8 +26,8 @@ const LoginForm = () => {
 
     try {
       const { data } = await login({ variables: { ...userFormData }})
-
-      Auth.login(data.user.token);
+console.log(data)
+      Auth.login(data.login.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);

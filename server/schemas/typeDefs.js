@@ -5,7 +5,6 @@ const typeDefs = gql`
         _id: ID
         username: String!
         email: String!
-        password: String!
         jobs: [Job]
         
     }
@@ -40,7 +39,7 @@ const typeDefs = gql`
 
   type Auth {
     token: String!
-    user: User!
+    user: User
   }
 
   input UploadInput {
@@ -86,7 +85,7 @@ const typeDefs = gql`
     updateJob(id: ID!, input: JobInput!): Job!
     deleteJob(id: ID!): Job!
 
-    addUser(input: UserInput!): Auth
+    addUser(username: String!, password: String!, email: String!): Auth
     updateUser(id: ID!, input: UserInput!): User!
     deleteUser(id: ID!): User!
 
