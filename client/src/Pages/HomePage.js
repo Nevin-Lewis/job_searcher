@@ -7,12 +7,12 @@ import { Button } from "react-bootstrap";
 function HomePage() {
     return (
         <div>
-            <h1>Homepage</h1>
+            <h1>Sign Up</h1>
         {Auth.loggedIn() ? ( <Button onClick={Auth.logout}>Logout</Button> ) : (
             <div>
             <Signup />
 
-            <h1> Split</h1>
+            <h1>Log In</h1>
             <LoginForm />
             </div>
         )}
