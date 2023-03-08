@@ -1,62 +1,52 @@
 import React, { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/auth';
 import { LOGIN_USER } from '../utils/mutations';
 
+const LoginForm = () => {
+  const [userFormData, setUserFormData] = useState({ email: '', password: '' });
+  const [validated] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [login, { error }] = useMutation(LOGIN_USER);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserFormData({ ...userFormData, [name]: value });
+  };
 
-// import { loginUser } from '../utils/API';
-import Auth from '../utils/auth';
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
 
-// const LoginForm = () => {
-//   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-//   const [validated] = useState(false);
-//   const [showAlert, setShowAlert] = useState(false);
-//   const loginUser = useMutation(LOGIN_USER);
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     setUserFormData({ ...userFormData, [name]: value });
-//   };
+    // check if form has everything (as per react-bootstrap docs)
+    const form = event.currentTarget;
+    if (form.checkValidity() === false) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
+    try {
+      const { data } = await login({ variables: { ...userFormData }})
 
-//     // check if form has everything (as per react-bootstrap docs)
-//     const form = event.currentTarget;
-//     if (form.checkValidity() === false) {
-//       event.preventDefault();
-//       event.stopPropagation();
-//     }
+      Auth.login(data.user.token);
+    } catch (err) {
+      console.error(err);
+      setShowAlert(true);
+    }
 
-//     try {
-//       const mutationResponse = await loginUser({
-//         variables: { email: userFormData.email, password: userFormData.password },
-//       });
+    setUserFormData({
+      username: '',
+      email: '',
+      password: '',
+    });
+  };
 
-//       // if (!mutationResponse.ok) {
-//       //   throw new Error('something went wrong!');
-//       // }
-
-//       const token = mutationResponse.data.login.token;
-//       Auth.login(token);
-//     } catch (err) {
-//       console.error(err);
-//       setShowAlert(true);
-//     }
-
-//     setUserFormData({
-//       username: '',
-//       email: '',
-//       password: '',
-//     });
-//   };
-
-//   return (
+  return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
-        <Form.Group className='mb-3'>
+        <Form.Group>
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
             type='text'
@@ -69,7 +59,7 @@ import Auth from '../utils/auth';
           <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
         </Form.Group>
 
-        <Form.Group className='mb-3'>
+        <Form.Group>
           <Form.Label htmlFor='password'>Password</Form.Label>
           <Form.Control
             type='password'
@@ -89,7 +79,7 @@ import Auth from '../utils/auth';
         </Button>
       </Form>
     </>
-//   );
-// };
+  );
+};
 
-// export default LoginForm;
+export default LoginForm;
