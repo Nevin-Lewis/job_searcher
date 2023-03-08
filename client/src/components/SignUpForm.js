@@ -61,7 +61,7 @@ const SignupForm = () => {
           Something went wrong with your signup!
         </Alert>
 
-        <Form.Group className='mb-3'>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label htmlFor='username'>Username</Form.Label>
           <Form.Control
             type='text'
