@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./../App.css";
 
-import { useForm, useFieldArray } from "react-hook-form";
+// import { useForm, useFieldArray } from "react-hook-form";
 import Auth from '../utils/auth';
 
 // import styled from '@emotion/styled';
