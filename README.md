@@ -2,7 +2,7 @@
 # job_searcher
 
 ## Description
-
+This is an app that allows you to view, track, edit, and organize your job search journey. You can add jobs and edit your status on finding your career.
 ## Table of Contents
 * [Description](#description)
 * [User Story](#user-story)
