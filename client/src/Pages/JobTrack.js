@@ -1,15 +1,8 @@
-// import Container from 'react-bootstrap';
-// import {DndContext, closestCenter};
 import React, { useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./../App.css";
-import { useForm, useFieldArray } from "react-hook-form";
 
-// import styled from '@emotion/styled';
-// import jobCard from '../components/JobCard'
-// import { id, company, title, jobStage} from <- data for job
 
-// ReactDOM.render(<JobCard />, document.getElementById('root'))
 
 //add way to correlate to what stage you are in, in the model, and add mutation for updating job stage
 const fakeData = [
@@ -34,7 +27,6 @@ const fakeData = [
 ];
 
 function JobTrack() {
-  const [job, updateJob] = useState(fakeData);
   const [wishlist, setwishlist] = useState(
     fakeData.filter((app) => app.jobStage === 1)
   );
@@ -109,10 +101,7 @@ function JobTrack() {
       console.log("result specific " + JSON.stringify(result[source.droppableId]))
       eval("set" + source.droppableId)(result[source.droppableId]);
       eval("set" + destination.droppableId)(result[destination.droppableId]);
-      // setState({
-      //   items: result.droppable,
-      //   selected: result.droppable2,
-      // });
+
     }
   };
 
@@ -283,20 +272,3 @@ function JobTrack() {
 
 export default JobTrack;
 
-{
-  /* <Draggable draggableId="jobStage"> */
-}
-{
-  /* draggable id will need to be = to droppable ID to render*/
-}
-{
-  /* card component */
-}
-{
-  /* </Draggable>
-        <Droppable droppableId="1"></Droppable>
-        <Droppable droppableId="2"></Droppable>
-        <Droppable droppableId="3"></Droppable>
-        <Droppable droppableId="4"></Droppable>
-        <Droppable droppableId="5"></Droppable> */
-}
