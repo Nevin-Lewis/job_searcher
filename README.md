@@ -1,13 +1,16 @@
 - - - -
+
 # job_searcher
 
 ## Description
 This is an app that allows you to view, track, edit, and organize your job search journey. You can add jobs and edit your status on finding your career.
+
 ## Table of Contents
 * [Description](#description)
 * [User Story](#user-story)
 * [Usage](#uage)
-* [Contributing](#contributing)
+* [License](#license)
+* [Curators](#curators)
 * [Questions](#questions)
 
 ## User Story
@@ -17,7 +20,14 @@ So that I can track available positions, keep track of where I’ve applied, whe
 
 ## Usage
 
-## Contributing
+
+## License
+None
+
+## Questions
+If you have any concerns, feel free to message anyone of the curators' github to ask questions.
+
+## Curators
 [Dorsa Riahi Asl](https://github.com/dorsariahi)
 
 [Carter Matschek](https://github.com/cartermatschek)
@@ -28,7 +38,5 @@ So that I can track available positions, keep track of where I’ve applied, whe
 
 [Haylee Lovelady](https://github.com/HLovelady)
 
-## Questions
-If you have any questions, feel free to contact any one of us.
 - - - -
 
