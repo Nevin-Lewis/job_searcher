@@ -7,7 +7,7 @@
 * [Description](#description)
 * [Usage](#uage)
 * [Contributing](#contributing)
-* [](#)
+* [Questions](#questions)
 
 ## Usage
 
@@ -23,6 +23,6 @@
 [Haylee Lovelady](https://github.com/HLovelady)
 
 ## Questions
-If you have any questions, feel free to contact us 
+If you have any questions, feel free to contact any one of us.
 - - - -
 
