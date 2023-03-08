@@ -5,9 +5,15 @@
 
 ## Table of Contents
 * [Description](#description)
+* [User Story](#user-story)
 * [Usage](#uage)
 * [Contributing](#contributing)
 * [Questions](#questions)
+
+##User Story
+As a user,
+I want a job-seeking organization tool
+So that I can track available positions, keep track of where I’ve applied, when I’ve followed up, contact info, and interview notes.
 
 ## Usage
 
