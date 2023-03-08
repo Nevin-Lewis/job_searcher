@@ -8,6 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 // import { Button } from "@mui/material";
+import StageChoice from "../components/StageChoice";
 import { useMutation } from "@apollo/client";
 import { ADD_JOB } from "../utils/mutations"
 
