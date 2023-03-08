@@ -16,7 +16,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
-const pages = ['JobTrack', 'Home'];
+const pages = ['JobTrack', 'JobDetails'];
 const settings = ['Logout'];
 
 function ResponsiveAppBar() {
