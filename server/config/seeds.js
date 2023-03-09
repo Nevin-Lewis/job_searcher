@@ -40,6 +40,7 @@ db.once('open', async () => {
           skills: ['Patience', 'Adaptability', 'Kindness'],
           tasks: ['apply', 'interview', 'accept'],
           contacts: [contacts[0]._id, contacts[1]._id],
+          jobStage: 1,
         },
         {
           company: 'Disney World',
@@ -51,6 +52,7 @@ db.once('open', async () => {
           skills: ['Patience', 'Adaptability', 'Kindness'],
           tasks: ['apply', 'interview', 'accept'],
           contacts: [contacts[1]._id],
+          jobStage: 1,
         },
       ]);
 

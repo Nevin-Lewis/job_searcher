@@ -19,16 +19,17 @@ const typeDefs = gql`
 
   type Job {
     _id: ID!
-    company: String!
-    title: String!
-    jobPostLink: String!
-    salary: Int!
-    description: String!
-    location: String!
+    company: String
+    title: String
+    jobPostLink: String
+    salary: Int
+    description: String
+    location: String
     uploads: Upload
     skills: [String]
     tasks: [String]
     contacts: [Contact]
+    jobStage: Int
   }
   type Upload {
     _id: ID!
@@ -54,15 +55,16 @@ const typeDefs = gql`
   }
 
   input JobInput {
-    company: String!
-    title: String!
-    jobPostLink: String!
-    salary: Int!
-    description: String!
-    location: String!
-    uploads: String!
+    company: String
+    title: String
+    jobPostLink: String
+    salary: Int
+    description: String
+    location: String
+    uploads: String
     skills: [String]
     tasks: [String]
+    jobStage: Int
   }
 
   type Query {
