@@ -22,7 +22,7 @@ const typeDefs = gql`
     company: String
     title: String
     jobPostLink: String
-    salary: Int
+    salary: String
     description: String
     location: String
     uploads: Upload
@@ -58,7 +58,7 @@ const typeDefs = gql`
     company: String
     title: String
     jobPostLink: String
-    salary: Int
+    salary: String
     description: String
     location: String
     uploads: String

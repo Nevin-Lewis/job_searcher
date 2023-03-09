@@ -38,11 +38,9 @@ const fakeData = [
 
 function JobCard({id, index, company, title}) {
   const {loading, data, error} = useQuery(QUERY_JOBS)
-  console.log("Loading: ", loading)
-  console.log("Data: ", data)
-  console.log("Error: ", error)
   
-  const jobData = data?.getJobs || []
+  const jobData = data || []
+  console.log(jobData)
   
   return (
     <Draggable draggableId={id} index={index}>

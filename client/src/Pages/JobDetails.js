@@ -26,7 +26,7 @@ export default function AddressForm() {
       description: '',
       jobPostLink: '',
       location: '',
-      salary: '',
+      salary: 0,
       title: '',
       skills: '',
       tasks: '',
@@ -47,24 +47,38 @@ export default function AddressForm() {
     }
 
     try {
+      console.log(userFormData)
       const mutationResponse = await addJob({
         variables: {
-          ...userFormData
+          input: {
+          company: userFormData.company,
+          description: userFormData.description,
+          jobPostLink: userFormData.jobPostLink,
+          location: userFormData.location,
+          salary: userFormData.salary,
+          title: userFormData.title,
+          skills: userFormData.skills,
+          tasks: userFormData.tasks,
+          jobStage: 1,
         }
+      }
       });
-
-    
-      const token = mutationResponse.data.addUser.token;
-      Auth.login(token);
+      console.log(mutationResponse)
     } catch (err) {
       console.error(err);
       setShowAlert(true);
     }
 
     setUserFormData({
-      username: '',
-      email: '',
-      password: '',
+      company: '',
+      description: '',
+      jobPostLink: '',
+      location: '',
+      salary: '',
+      title: '',
+      skills: '',
+      tasks: '',
+      contacts: '',
     });
   };
 
@@ -135,7 +149,7 @@ export default function AddressForm() {
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='salary'>Salary</Form.Label>
           <Form.Control
-            type='text'
+            type='number'
             placeholder='Your job salary'
             name='salary'
             onChange={handleInputChange}

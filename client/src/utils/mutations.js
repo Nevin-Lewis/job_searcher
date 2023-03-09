@@ -94,17 +94,10 @@ mutation DeleteContact($id: ID!) {
 `;
 
 export const ADD_JOB = gql`
-mutation AddJob($input: JobInput!) {
+mutation addJob($input: JobInput!){
   addJob(input: $input) {
+    _id
     company
-    title
-    jobPostLink
-    salary
-    description
-    location
-    tasks
-    skills
-    jobStage
   }
 }
 `;
