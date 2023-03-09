@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Import components
 import NavBar from './components/NavBar';
 import HomePage from './Pages/HomePage';
-import JobTrack from './Pages/JobTrack';
+// import JobTrack from './Pages/JobTrack';
 import JobDetails from './Pages/JobDetails';
 import Profile from './Pages/Profile';
 
@@ -49,7 +49,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route exact path='/' element={<HomePage />} />
-            <Route exact path='/JobTrack' element={<JobTrack />} />
+            {/* <Route exact path='/JobTrack' element={<JobTrack />} /> */}
             <Route exact path='/JobDetails' element={<JobDetails />} />
             <Route exact path='/Profile' element={<Profile />} />
           </Routes>
