@@ -37,6 +37,7 @@
 }
 
 h1 {
+  font-family: monospace;
  font-weight: lighter;
  text-align: center;
 }
@@ -107,32 +108,32 @@ justify-content: space-between;
 }
 
  #wishlist {
-  border-color: var(--b1);
+  background-color: var(--b1);
   border-width: 3px;
   box-shadow: 5px 5px 2px 1px var(--b1);
   
  }
 
  #applied {
-  border-color: var(--b2);
+  background-color: var(--b2);
   border-width: 3px;
   box-shadow: 5px 5px 2px 1px var(--b1);
  }
 
  #phone {
-  border-color: var(--b3);
+  background-color: var(--b3);
   border-width: 3px;
   box-shadow: 5px 5px 2px 1px var(--b1);
  }
 
  #next {
-  border-color: var(--b4);
+  background-color: var(--b4);
   border-width: 3px;
   box-shadow: 5px 5px 2px 1px var(--b1);
  }
 
  #offer {
-  border-color: var(--b5);
+  background-color: var(--b5);
   border-width: 3px;
   box-shadow: 5px 5px 2px 1px var(--b1);;
  }
