@@ -21,12 +21,15 @@ function HomePage() {
         <div>
         {Auth.loggedIn() ? ( <Button onClick={Auth.logout}>Logout</Button> ) : (
         // {Auth.loggedIn() ? navigate('/Profile') : (
-            <div>
+            <div className="logsign">
+                <div className="container" styles={{margin:"10px"}}>
                 <h1>Sign Up</h1>
                 <Signup />
-
+                </div>
+                <div className="container" styles={{margin:"10px"}}>
                 <h1>Log In</h1>
                 <LoginForm />
+                </div>
             </div>
         )}
         </div>

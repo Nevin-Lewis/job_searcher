@@ -85,7 +85,8 @@ export default function AddressForm() {
 
 
   return (
-    <>
+    <div className="container">
+      <h1>Job Details</h1>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
@@ -204,7 +205,7 @@ export default function AddressForm() {
           Add Job
         </Button>
       </Form>
-    </>
+    </div>
 
 //NEVIN'S ORIGINAL FORM
     // <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>

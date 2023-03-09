@@ -41,7 +41,7 @@ console.log(data)
   };
 
   return (
-    <>
+    <div>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
@@ -78,7 +78,7 @@ console.log(data)
           Submit
         </Button>
       </Form>
-    </>
+    </div>
   );
 };
 

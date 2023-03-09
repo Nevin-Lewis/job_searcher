@@ -3,6 +3,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import "./../App.css";
 
 
+
 import Auth from '../utils/auth';
 import { useQuery } from "@apollo/client";
 import { QUERY_JOBS } from "../utils/queries.js"
@@ -28,6 +29,12 @@ const fakeData = [
     jobStage: 2,
   },
 ];
+
+
+
+
+
+
 
 function JobCard({id, index, company, title}) {
   const {loading, data, error} = useQuery(QUERY_JOBS)
@@ -231,6 +238,7 @@ function Profile() {
      
     </div>
   );
-              };
+             
+};
 export default Profile;
 
