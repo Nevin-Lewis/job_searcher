@@ -37,11 +37,7 @@ const fakeData = [
 
 
 function JobCard({id, index, company, title}) {
-  const {loading, data, error} = useQuery(QUERY_JOBS)
-  
-  const jobData = data || []
-  console.log(jobData)
-  
+
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
@@ -60,9 +56,21 @@ function JobCard({id, index, company, title}) {
   );
 }
 
-function Profile() {
+const Profile = () => {
+const FindJobs =  useQuery(QUERY_JOBS);
+  const FindData = async () => {
+    try {
+      const jobData = await FindJobs()
+      console.log(jobData)
+    } catch (err) {
+      console.error(err);
+    }
+    return (jobData);
+  }
+  
+  
   const [wishlist, setwishlist] = useState(
-    fakeData.filter((app) => app.jobStage === 1)
+    jobData.jobs.filter((app) => app.jobStage === 1)
   );
   const [applied, setapplied] = useState(
     fakeData.filter((app) => app.jobStage === 2)
@@ -76,7 +84,6 @@ function Profile() {
   const [offer, setoffer] = useState(
     fakeData.filter((app) => app.jobStage === 5)
   );
-
   const move = (source, destination, droppableSource, droppableDestination) => {
     console.log(source, destination, droppableSource, droppableDestination);
     const sourceClone = Array.from(source);
@@ -156,7 +163,7 @@ function Profile() {
                 <div {...provided.droppableProps} ref={provided.innerRef}>
                   {wishlist.map(({ id, company, title, jobStage }, index) => {
                     return (
-                    <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    <JobCard key={index+5} id={`"${index+5}"`} company={company} title={title} index={index}/>
                     );
                   })}
                   {provided.placeholder}
