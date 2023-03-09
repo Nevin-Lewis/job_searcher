@@ -13,11 +13,13 @@ import { useMutation } from "@apollo/client";
 import { ADD_JOB } from "../utils/mutations"
 
 import Auth from '../utils/auth';
+import { useNavigate } from "react-router-dom";
 
 //CARTER'S ATTEMPTED FORM AND FUNCTIONALITY
 export default function AddressForm() {
   const [addJob] = useMutation(ADD_JOB)
   const [validated] = useState(false);
+  const navigate = useNavigate();
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
@@ -36,8 +38,9 @@ export default function AddressForm() {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
-  const handleFormSubmit = async (event) => {
+  const HandleFormSubmit = async (event) => {
     event.preventDefault();
+   
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -80,6 +83,9 @@ export default function AddressForm() {
       tasks: '',
       contacts: '',
     });
+
+    navigate('/Profile');
+
   };
 
 
@@ -88,7 +94,7 @@ export default function AddressForm() {
     <div className="container">
       <h1>Job Details</h1>
       {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form noValidate validated={validated} onSubmit={HandleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your signup!

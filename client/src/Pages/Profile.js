@@ -55,7 +55,7 @@ function JobCard({ id, index, company, title }) {
 
 
     return (
-        <Draggable draggableId={`${id}`} key={id} index={index} >
+        <Draggable draggableId={`${company}`} key={id} index={index} >
             {(provided) => (
                 <div
                     ref={provided.innerRef}
@@ -319,5 +319,6 @@ function Profile() {
 
 };
 export default Profile;
+
 
 
