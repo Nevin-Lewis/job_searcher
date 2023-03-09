@@ -47,6 +47,7 @@ const resolvers = {
       return {token, user};
     },
     addUser: async (parent, args) => {
+      console.log(args);
       const user = await User.create(args);
       const token = signToken(user);
 
@@ -61,8 +62,8 @@ const resolvers = {
       return user;
     },
     addJob: async (parent, {input}) => {
-      const job = new Job(input);
-      await job.save();
+      console.log('newlog' + {...input});
+      const job = await Job.create(input);
       return job;
     },
     updateJob: async (parent, {id, input}) => {
