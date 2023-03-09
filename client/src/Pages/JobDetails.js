@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Form, Button, Alert } from 'react-bootstrap';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -24,7 +24,8 @@ export default function AddressForm() {
   const [showAlert, setShowAlert] = useState(false);
 
   const [userFormData, setUserFormData] = useState(
-    { company: '',
+    {
+      company: '',
       description: '',
       jobPostLink: '',
       location: '',
@@ -33,14 +34,14 @@ export default function AddressForm() {
       skills: '',
       tasks: '',
       contacts: '',
-     });
+    });
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
   };
   const HandleFormSubmit = async (event) => {
     event.preventDefault();
-   
+
 
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
@@ -54,17 +55,17 @@ export default function AddressForm() {
       const mutationResponse = await addJob({
         variables: {
           input: {
-          company: userFormData.company,
-          description: userFormData.description,
-          jobPostLink: userFormData.jobPostLink,
-          location: userFormData.location,
-          salary: userFormData.salary,
-          title: userFormData.title,
-          skills: userFormData.skills,
-          tasks: userFormData.tasks,
-          jobStage: 1,
+            company: userFormData.company,
+            description: userFormData.description,
+            jobPostLink: userFormData.jobPostLink,
+            location: userFormData.location,
+            salary: userFormData.salary,
+            title: userFormData.title,
+            skills: userFormData.skills,
+            tasks: userFormData.tasks,
+            jobStage: 1,
+          }
         }
-      }
       });
       console.log(mutationResponse)
     } catch (err) {
@@ -213,7 +214,7 @@ export default function AddressForm() {
       </Form>
     </div>
 
-//NEVIN'S ORIGINAL FORM
+    //NEVIN'S ORIGINAL FORM
     // <Container component="main" maxWidth="sm" sx={{ mb: 4 }}>
     //     <Paper variant="outlined" sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}>
     //       <Typography component="h1" variant="h4" align="center">
