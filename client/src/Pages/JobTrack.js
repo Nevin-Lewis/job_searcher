@@ -13,30 +13,30 @@ const fakeData = [
     id: "1",
     company: "Google",
     title: "Frontend Developer",
-    jobStage: 2,
+    jobStage: 1,
   },
   {
     id: "2",
     company: "Bonterra Tech",
     title: "Backend Developer",
-    jobStage: 3,
+    jobStage: 2,
   },
   {
     id: "3",
     company: "Amazon",
     title: "Fullstack Developer",
-    jobStage: 2,
+    jobStage: 3,
   },
 ];
 
 function JobCard({id, index, company, title}) {
-  const {loading, data, error} = useQuery(QUERY_JOBS)
-  console.log("Loading: ", loading)
-  console.log("Data: ", data)
-  console.log("Error: ", error)
   
-  const jobData = data?.getJobs || []
-  
+  const FindData = async () => {
+    const {data} = useQuery(QUERY_JOBS);
+    console.log(data);
+
+  }
+
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
@@ -56,8 +56,9 @@ function JobCard({id, index, company, title}) {
 }
 
 function JobTrack() {
+
   const [wishlist, setwishlist] = useState(
-    fakeData.filter((app) => app.jobStage === 1)
+  fakeData.filter((app) => app.jobStage === 1)
   );
   const [applied, setapplied] = useState(
     fakeData.filter((app) => app.jobStage === 2)

@@ -12,7 +12,7 @@ function HomePage() {
     useEffect(() => {
         if(Auth.loggedIn()) {
             console.log("User Authorized");
-            navigate('/Profile');
+            navigate('/JobTrack');
         }
     }, []);
 

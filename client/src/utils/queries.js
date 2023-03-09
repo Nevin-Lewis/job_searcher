@@ -68,8 +68,8 @@ export const QUERY_JOB = gql`
 `;
 
 export const QUERY_JOBS = gql`
-  query getJobs {
-    Jobs {
+  query {
+    jobs {
       _id
       company
       title
@@ -77,10 +77,13 @@ export const QUERY_JOBS = gql`
       salary
       description
       location
-      uploads
       skills
       tasks
-      contacts
+      jobStage
+      contacts {
+        _id
+        name
+      }
     }
   }
-`;
+  `;

@@ -28,6 +28,9 @@ const jobSchema = new Schema({
   tasks: {
     type: [String],
   },
+  jobStage: {
+    type: Number,
+  },
   contacts: [{
     type: Schema.Types.ObjectId,
     ref: 'Contact',
