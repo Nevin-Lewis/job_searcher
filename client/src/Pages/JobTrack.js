@@ -4,8 +4,8 @@ import "./../App.css";
 
 
 import Auth from '../utils/auth';
-
-
+import { useQuery } from "@apollo/client";
+import { QUERY_JOBS } from "../utils/queries.js"
 
 //add way to correlate to what stage you are in, in the model, and add mutation for updating job stage
 const fakeData = [
@@ -30,6 +30,13 @@ const fakeData = [
 ];
 
 function JobCard({id, index, company, title}) {
+  const {loading, data, error} = useQuery(QUERY_JOBS)
+  console.log("Loading: ", loading)
+  console.log("Data: ", data)
+  console.log("Error: ", error)
+  
+  const jobData = data?.getJobs || []
+  
   return (
     <Draggable draggableId={id} index={index}>
       {(provided) => (
@@ -126,6 +133,8 @@ function JobTrack() {
 
     }
   };
+
+
 
   return (
     

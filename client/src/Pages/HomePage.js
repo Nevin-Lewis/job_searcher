@@ -1,19 +1,32 @@
 import LoginForm from "../components/LoginForm";
 import Signup from "../components/SignUpForm";
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import Auth from "../utils/auth";
 import { Button } from "react-bootstrap";
 
 function HomePage() {
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if(Auth.loggedIn()) {
+            console.log("User Authorized");
+            navigate('/Profile');
+        }
+    }, []);
+
+   // if(Auth.loggedIn() ? navigate('/Profile') : ( )
     return (
         <div>
-            <h1>Homepage</h1>
         {Auth.loggedIn() ? ( <Button onClick={Auth.logout}>Logout</Button> ) : (
+        // {Auth.loggedIn() ? navigate('/Profile') : (
             <div>
-            <Signup />
+                <h1>Sign Up</h1>
+                <Signup />
 
-            <h1> Split</h1>
-            <LoginForm />
+                <h1>Log In</h1>
+                <LoginForm />
             </div>
         )}
         </div>

@@ -46,7 +46,7 @@ console.log(data)
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with your login credentials!
         </Alert>
-        <Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
             type='text'
