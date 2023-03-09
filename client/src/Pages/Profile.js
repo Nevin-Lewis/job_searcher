@@ -204,19 +204,19 @@ function Profile() {
 
         <div>
 
-
-
             <h1>JobTrack</h1>
             <Button variant="contained" onClick={changePage}> Add Job</Button>
 
+
             <div className="jobTrack">
-                <List component="nav">
+                <List >
                     {mainListItems}
 
                     <Divider sx={{ my: 1 }} />
                     {secondaryListItems}
 
                 </List>
+
                 {Auth.loggedIn() && (
                     <DragDropContext onDragEnd={handleOnDragEnd}>
                         {/* Wishlist */}
@@ -316,6 +316,8 @@ function Profile() {
 
                     </DragDropContext>
                 )}
+
+
             </div>
 
         </div>
