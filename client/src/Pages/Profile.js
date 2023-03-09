@@ -55,7 +55,7 @@ function JobCard({ id, index, company, title }) {
 
 
     return (
-        <Draggable draggableId={index} key={index} index={index} >
+        <Draggable draggableId={`${id}`} key={id} index={index} >
             {(provided) => (
                 <div
                     ref={provided.innerRef}
@@ -223,7 +223,7 @@ function Profile() {
                                     <div {...provided.droppableProps} ref={provided.innerRef}>
 
                                         {wishlist.map(({ id, company, title, jobStage }, index) => {
-                                            console.log(index)
+
                                             return (
                                                 <JobCard key={id} id={id} company={company} title={title} index={index} />
 
@@ -247,7 +247,7 @@ function Profile() {
                                     <div {...provided.droppableProps} ref={provided.innerRef}>
                                         {applied.map(({ id, company, title, jobStage }, index) => {
                                             return (
-                                                <JobCard key={id} id={index} company={company} title={title} index={index} />
+                                                <JobCard key={id} id={id} company={company} title={title} index={index} />
                                             );
                                         })}
                                         {provided.placeholder}
