@@ -16,6 +16,7 @@ import HomePage from './Pages/HomePage';
 import JobDetails from './Pages/JobDetails';
 import Profile from './Pages/Profile';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -55,6 +56,8 @@ function App() {
           </Routes>
         </>
       </Router>
+
+
     </ApolloProvider>
   );
 }

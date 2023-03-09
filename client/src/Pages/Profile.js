@@ -8,6 +8,8 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import { mainListItems, secondaryListItems } from '../components/listItems';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
+import { AiOutlineCheckCircle } from 'react-icons/ai'
+import { BsSearch } from 'react-icons/bs'
 // import JobCard from "../components/JobCard";
 
 
@@ -204,8 +206,12 @@ function Profile() {
 
         <div>
 
-            <h1>JobTrack</h1>
-            <Button variant="contained" onClick={changePage}> Add Job</Button>
+            <h1>JobTrack
+                <BsSearch className="searchIcon"></BsSearch>
+            </h1>
+            <Button variant="contained" onClick={changePage}> Add Job
+                <AiOutlineCheckCircle />
+            </Button>
 
 
             <div className="jobTrack">
