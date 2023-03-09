@@ -101,6 +101,13 @@ h1 {
   max-width: 400px;
 }
 
+.searchIcon {
+  font-size: 2rem;
+  margin: left;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
 .logsign {
 display: flex;
 margin: 40px;

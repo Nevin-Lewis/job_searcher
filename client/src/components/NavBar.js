@@ -128,18 +128,12 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-           JobSight
+            JobSight
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {/* Desktop menu links */}
-              
-              <Button
-                key='JobDetails'
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                <Link className="text-dark" to={`/JobDetails`}>Add Job</Link>
-              </Button>
+
+
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -164,16 +158,16 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-               <MenuItem key={settings[1]} onClick={Auth.logout}>
-                  <Typography textAlign="center">{settings[1]}</Typography>
-                </MenuItem>
-                <MenuItem key={settings[0]}>
-                <Link className="text-dark"  to={`/JobTrack`} >{
-                    <Typography textAlign="center">{settings[0]}</Typography>
+              <MenuItem key={settings[1]} onClick={Auth.logout}>
+                <Typography textAlign="center">{settings[1]}</Typography>
+              </MenuItem>
+              <MenuItem key={settings[0]}>
+                <Link className="text-dark" to={`/JobTrack`} >{
+                  <Typography textAlign="center">{settings[0]}</Typography>
                 }</Link>
-                
-                </MenuItem>
-      
+
+              </MenuItem>
+
             </Menu>
           </Box>
         </Toolbar>
