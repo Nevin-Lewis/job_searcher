@@ -1,196 +1,238 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import JobTrack from './JobTrack';
-import { mainListItems, secondaryListItems } from '../components/listItems';
+import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import "./../App.css";
 
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
+import Auth from '../utils/auth';
+import { useQuery } from "@apollo/client";
+import { QUERY_JOBS } from "../utils/queries.js"
+
+//add way to correlate to what stage you are in, in the model, and add mutation for updating job stage
+const fakeData = [
+  {
+    id: "1",
+    company: "Google",
+    title: "Frontend Developer",
+    jobStage: 2,
+  },
+  {
+    id: "2",
+    company: "Bonterra Tech",
+    title: "Backend Developer",
+    jobStage: 3,
+  },
+  {
+    id: "3",
+    company: "Amazon",
+    title: "Fullstack Developer",
+    jobStage: 2,
+  },
+];
+
+function JobCard({id, index, company, title}) {
+  const {loading, data, error} = useQuery(QUERY_JOBS)
+  console.log("Loading: ", loading)
+  console.log("Data: ", data)
+  console.log("Error: ", error)
+  
+  const jobData = data?.getJobs || []
+  
+  return (
+    <Draggable draggableId={id} index={index}>
+      {(provided) => (
+        <div
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+        >
+          <div className="jobCard">
+            <p>{company}</p>
+            <p>{title}</p>
+          </div>
+        </div>
+      )}
+    </Draggable>
+  );
 }
 
-const drawerWidth = 240;
+function Profile() {
+  const [wishlist, setwishlist] = useState(
+    fakeData.filter((app) => app.jobStage === 1)
+  );
+  const [applied, setapplied] = useState(
+    fakeData.filter((app) => app.jobStage === 2)
+  );
+  const [phone, setphone] = useState(
+    fakeData.filter((app) => app.jobStage === 3)
+  );
+  const [next, setnext] = useState(
+    fakeData.filter((app) => app.jobStage === 4)
+  );
+  const [offer, setoffer] = useState(
+    fakeData.filter((app) => app.jobStage === 5)
+  );
 
-const AppBar = styled(MuiAppBar, {
-    shouldForwardProp: (prop) => prop !== 'open',
-})(({ theme, open }) => ({
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
-    }),
-    ...(open && {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }),
-}));
+  const move = (source, destination, droppableSource, droppableDestination) => {
+    console.log(source, destination, droppableSource, droppableDestination);
+    const sourceClone = Array.from(source);
+    const destClone = Array.from(destination);
+    const [removed] = sourceClone.splice(droppableSource.index, 1);
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-    ({ theme, open }) => ({
-        '& .MuiDrawer-paper': {
-            position: 'relative',
-            whiteSpace: 'nowrap',
-            width: drawerWidth,
-            transition: theme.transitions.create('width', {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.enteringScreen,
-            }),
-            boxSizing: 'border-box',
-            ...(!open && {
-                overflowX: 'hidden',
-                transition: theme.transitions.create('width', {
-                    easing: theme.transitions.easing.sharp,
-                    duration: theme.transitions.duration.leavingScreen,
-                }),
-                width: theme.spacing(7),
-                [theme.breakpoints.up('sm')]: {
-                    width: theme.spacing(9),
-                },
-            }),
-        },
-    }),
-);
+    destClone.splice(droppableDestination.index, 0, removed);
 
-const mdTheme = createTheme();
+    const result = {};
+    result[droppableSource.droppableId] = sourceClone;
+    result[droppableDestination.droppableId] = destClone;
 
-function DashboardContent() {
-    const [open, setOpen] = React.useState(true);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
+    return result;
+  };
 
-    return (
-        <ThemeProvider theme={mdTheme}>
-            <Box sx={{ display: 'flex' }}>
-                <CssBaseline />
-                <AppBar position="absolute" open={open}>
-                    <Toolbar
-                        sx={{
-                            pr: '24px', // keep right padding when drawer closed
-                        }}
+  const getList = (id) => {
+    console.log("id", id);
 
-                    >
-                        <IconButton
-                            edge="start"
-                            color="inherit"
-                            aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: '36px',
-                                ...(open && { display: 'none' }),
-                            }}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Typography
-                            component="h1"
-                            variant="h6"
-                            color="inherit"
-                            noWrap
-                            sx={{ flexGrow: 1 }}
-                        >
-                            Dashboard
-                        </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                    </Toolbar>
-                </AppBar>
-                <Drawer variant="permanent" open={open}>
-                    <Toolbar
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'flex-end',
-                            px: [1],
-                        }}
-                    >
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider />
-                    <List component="nav">
-                        {mainListItems}
+    const list = eval(id);
+    console.log(list);
+    return list;
+  };
+  // this.state[this.id2List[id]];
 
-                        <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
+  const handleOnDragEnd = (result) => {
+    const { source, destination } = result;
 
-                    </List>
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
 
-                </Drawer>
-                <Box
-                    component="main"
-                    sx={{
-                        backgroundColor: (theme) =>
-                            theme.palette.mode === 'light'
-                                ? theme.palette.grey[100]
-                                : theme.palette.grey[900],
-                        flexGrow: 1,
-                        height: '100vh',
-                        overflow: 'auto',
-                    }}
+    if (source.droppableId === destination.droppableId) {
+      // const items = reorder(
+      //     this.getList(source.droppableId),
+      //     source.index,
+      //     destination.index
+      // );
+      // let state = { items };
+      // if (source.droppableId === 'droppable2') {
+      //     state = { selected: items };
+     
+      // }
+      // this.setState(state);
+    } else {
+      const result = move(
+        getList(source.droppableId),
+        getList(destination.droppableId),
+        source,
+        destination
+      );
+
+      console.log("source.droppableId " + source.droppableId)
+      console.log("destination.droppableId " + destination.droppableId)
+      console.log("result " + JSON.stringify(result))
+      console.log("result specific " + JSON.stringify(result[source.droppableId]))
+      eval("set" + source.droppableId)(result[source.droppableId]);
+      eval("set" + destination.droppableId)(result[destination.droppableId]);
+
+    }
+  };
 
 
-                >
-                    <Toolbar />
-                    <Container maxWidth="lg" sx={{ mt: 6, mb: 6 }}>
-                        <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Grid item xs={12} md={8} lg={9}>
-                                <Paper >
-                                    <JobTrack />
 
-                                </Paper>
-                            </Grid>
-                            {/* Recent Deposits */}
+  return (
+    
+    <div>
+      <h1>JobTrack</h1>
+      <div className="jobTrack">
+      { Auth.loggedIn() && (
+      <DragDropContext onDragEnd={handleOnDragEnd}>
+          {/* Wishlist */}
+          <Droppable droppableId="wishlist">
+            {(provided) => (
+              <div className="jobList" id="wishlist">
+                <div className="title">Wishlist</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {wishlist.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                    <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
 
-                            {/* Recent Orders */}
-                            {/* <Grid item xs={12}>
-                                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+          {/* Applied */}
+          <Droppable droppableId="applied">
+            {(provided) => (
+              <div className="jobList" id="applied">
+                <div className="title">Applied</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {applied.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
 
-                                </Paper>
-                            </Grid> */}
-                        </Grid>
-                        <Copyright sx={{ pt: 4 }} />
-                    </Container>
-                </Box>
-            </Box>
-        </ThemeProvider>
-    );
-}
+          {/* Phone Interview */}
+          <Droppable droppableId="phone">
+            {(provided) => (
+              <div className="jobList" id="phone">
+                <div className="title">Phone Interview</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {phone.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
 
-export default function Dashboard() {
-    return <DashboardContent />;
-}
+          {/* Next Interviews */}
+          <Droppable droppableId="next">
+            {(provided) => (
+              <div className="jobList" id="next">
+                <div className="title">Next Interviews</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {next.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
+
+          {/* Job Offer */}
+          <Droppable droppableId="offer">
+            {(provided) => (
+              <div className="jobList" id="offer">
+                <div className="title">Job Offer</div>
+                <div {...provided.droppableProps} ref={provided.innerRef}>
+                  {offer.map(({ id, company, title, jobStage }, index) => {
+                    return (
+                      <JobCard key={id} id={id} company={company} title={title} index={index}/>
+                    );
+                  })}
+                  {provided.placeholder}
+                </div>
+              </div>
+            )}
+          </Droppable>
+        </DragDropContext>
+        )} 
+      </div>
+     
+    </div>
+  );
+              };
+export default Profile;
+
