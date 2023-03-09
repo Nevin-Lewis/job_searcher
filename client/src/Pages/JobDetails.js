@@ -22,56 +22,55 @@ export default function AddressForm() {
             name="CompanyName"
             label="Company Name"
             fullWidth
-            autoComplete="given-name"
+            // autoComplete="given-name"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="lastName"
-            name="lastName"
+            id="Location"
+            name="Location"
             label="Location"
             fullWidth
-            autoComplete="family-name"
+            // autoComplete="family-name"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="address1"
-            name="address1"
+            id="Salary"
+            name="Salary"
             label="Salary"
             fullWidth
-            autoComplete="shipping address-line1"
+            // autoComplete="shipping address-line1"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            id="address2"
+            id="Job Description"
             name="Job Description"
             label="Job Description"
             fullWidth
-            autoComplete="shipping address-line2"
+            // autoComplete="shipping address-line2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
-            id="city"
-            name="city"
-            label="City"
+            id="Title"
+            name="Title"
+            label="Title"
             fullWidth
-            autoComplete="shipping address-level2"
+            // autoComplete="shipping address-level2"
             variant="standard"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
+            id="Skills"
+            name="Skills"
+            label="Skills"
             fullWidth
             variant="standard"
           />
