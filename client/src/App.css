@@ -101,6 +101,7 @@ h1 {
   max-width: 400px;
 }
 
+
 .searchIcon {
   font-size: 2rem;
   margin: left;
@@ -110,8 +111,10 @@ h1 {
 
 .logsign {
 display: flex;
+gap: 20px;
 margin: 40px;
 justify-content: space-between;
+
 }
 
  #wishlist {
