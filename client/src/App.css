@@ -1,0 +1,165 @@
+:root {
+  --grey: #EDF7FD;
+  --med-grey: #E4E4E5;
+  --m3-gray: #D2D2D2;
+  --b1: #C7DDED;
+  --b2: #A8CBE3;
+  --b3: #8DC4EC;
+  --b4: #66A2CD;
+  --b5: #038BED ;
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+
+
+.App-Header {
+  background-color: #c5cfe3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+h1 {
+  font-family: monospace;
+ font-weight: lighter;
+ text-align: center;
+}
+
+.title {
+  font-size: 20px;
+  /* margin-left:20px; */
+  margin-top:10px;
+  text-align: center;
+  font-weight: light;
+}
+.job {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+.job p {
+  max-width: none;
+  font-weight: lighter;
+  margin: 0;
+}
+
+.jobCard {
+  display: table;
+  width: 175px;
+  height: 75px;
+  border-radius: 2px;
+  border-width: 2px;
+  border: solid;
+  border-color: var(--m3-gray);
+  background-color:var(--grey);
+  padding-left: 10px;
+  margin: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: light;
+}
+.jobTrack {
+  display: flex;
+  margin: 20px;
+}
+
+.jobList {
+  
+  background-color: var(--med-grey);
+  width: 275px;
+  border-color: var(--m3-grey);
+  border: solid;
+  border-width:2px;
+  margin-left:8px;
+  margin-right: 8px; 
+  border-radius: 4px;
+}
+.container {
+  margin: 40px;
+  padding: 15px;
+  border: #038BED solid 2px;
+  border-radius: 4px;
+  background-color: var(--m3-gray);
+  max-width: 400px;
+}
+
+
+.searchIcon {
+  font-size: 2rem;
+  margin: left;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.logsign {
+display: flex;
+gap: 20px;
+margin: 40px;
+justify-content: space-between;
+
+}
+
+ #wishlist {
+  background-color: var(--b1);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+  
+ }
+
+ #applied {
+  background-color: var(--b2);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #phone {
+  background-color: var(--b3);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #next {
+  background-color: var(--b4);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);
+ }
+
+ #offer {
+  background-color: var(--b5);
+  border-width: 3px;
+  box-shadow: 5px 5px 2px 1px var(--b1);;
+ }
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
