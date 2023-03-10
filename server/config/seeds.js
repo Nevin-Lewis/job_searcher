@@ -52,7 +52,19 @@ db.once('open', async () => {
           skills: ['Patience', 'Adaptability', 'Kindness'],
           tasks: ['apply', 'interview', 'accept'],
           contacts: [contacts[1]._id],
-          jobStage: 1,
+          jobStage: 2,
+        },
+        {
+          company: 'Disney World Japan',
+          title: 'Global Manager',
+          jobPostLink: 'disneyworld.com',
+          salary: 120000,
+          description: 'test description',
+          location: 'Japan',
+          skills: ['Patience', 'Adaptability', 'Kindness'],
+          tasks: ['apply', 'interview', 'accept'],
+          contacts: [contacts[1]._id],
+          jobStage: 3,
         },
       ]);
 
